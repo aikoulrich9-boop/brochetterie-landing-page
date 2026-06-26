@@ -105,6 +105,7 @@ export default function Tradition() {
 
             {/* Overlaid Fact card */}
             <div
+              className="tradition-fact-card"
               style={{
                 position: 'absolute',
                 bottom: '10px',
