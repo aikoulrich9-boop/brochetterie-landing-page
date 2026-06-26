@@ -42,25 +42,12 @@ export default function Footer() {
         >
           {/* Column 1: Brand Info */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+            <div style={{ marginBottom: '24px' }}>
               <img 
                 src="/logo.png" 
                 alt="Logo Brochetterie" 
-                style={{ height: '36px', width: 'auto', objectFit: 'contain' }} 
+                style={{ height: '44px', width: 'auto', objectFit: 'contain' }} 
               />
-              <h3
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: '1.7rem',
-                  fontWeight: 900,
-                  color: '#FFF7EC',
-                  letterSpacing: '1px',
-                  textTransform: 'uppercase',
-                  margin: 0
-                }}
-              >
-                Brochetterie
-              </h3>
             </div>
             <p
               style={{
