@@ -85,7 +85,25 @@ export default function Juices() {
       }}
       ref={ref}
     >
-      <div className="container" style={{ position: 'relative' }}>
+      {/* Decorative juice floating image */}
+      <motion.img
+        src="/images/juice_deco.png"
+        alt="Jus Décoratif"
+        animate={{ y: [0, -15, 0] }}
+        transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+        style={{
+          position: 'absolute',
+          top: '5%',
+          right: '-2%',
+          width: 'clamp(150px, 20vw, 250px)',
+          zIndex: 5,
+          pointerEvents: 'none',
+          filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.1))',
+          transform: 'rotate(10deg)'
+        }}
+      />
+
+      <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
