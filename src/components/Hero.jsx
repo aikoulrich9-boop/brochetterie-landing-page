@@ -173,20 +173,7 @@ export default function Hero() {
               alignSelf: 'stretch'
             }}
           >
-            {/* Main Transparent Image (floating & positioned absolute at the bottom-right boundary) */}
-            <div
-              className="floating-image"
-              style={{
-                position: 'absolute',
-                bottom: 'calc(-80px - 26mm)', // Ajusté de 2mm vers le haut pour compenser la réduction de taille
-                right: 'calc(-340px + 25mm)', // Décalé de 10mm supplémentaires vers la gauche (15mm + 10mm)
-                width: '340%',
-                maxWidth: '1600px',
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'flex-end'
-              }}
-            >
+            <div className="floating-image">
               <img
                 src="/images/hero_new.png"
                 alt="Igname Pilée traditionnelle"

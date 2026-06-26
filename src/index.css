@@ -129,9 +129,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Floating Animation */
+/* Floating Animation & Desktop styles */
 .floating-image {
   animation: float 6s ease-in-out infinite;
+  position: absolute;
+  bottom: calc(-80px - 26mm);
+  right: calc(-340px + 25mm);
+  width: 340%;
+  max-width: 1600px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 @keyframes float {
@@ -333,7 +341,7 @@ h1, h2, h3, h4, h5, h6 {
   .hero-image-container {
     order: -1 !important;
     margin-bottom: 10px !important;
-    min-height: 290px !important;
+    min-height: 380px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -348,8 +356,9 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center !important;
   }
   .floating-image img {
-    width: 100% !important;
-    max-width: 330px !important;
+    width: 150% !important;
+    max-width: 580px !important;
+    margin-left: -35% !important;
     transform: none !important;
   }
   .steam-container {
@@ -357,18 +366,18 @@ h1, h2, h3, h4, h5, h6 {
     left: 50% !important;
   }
   .hero-badge-left {
-    top: 15% !important;
-    left: 50% !important;
-    margin-left: -170px !important;
+    top: 24% !important;
+    left: 15px !important;
+    margin-left: 0 !important;
     right: auto !important;
     font-size: 0.8rem !important;
     padding: 8px 12px !important;
   }
   .hero-badge-right {
     bottom: 12% !important;
-    left: 50% !important;
-    margin-left: 30px !important;
-    right: auto !important;
+    right: 15px !important;
+    left: auto !important;
+    margin-left: 0 !important;
     font-size: 0.8rem !important;
     padding: 8px 12px !important;
   }
