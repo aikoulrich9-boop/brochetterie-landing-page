@@ -43,11 +43,9 @@ export default function App() {
         @keyframes fadeInApp {
           from {
             opacity: 0;
-            transform: scale(0.99);
           }
           to {
             opacity: 1;
-            transform: scale(1);
           }
         }
       `}</style>

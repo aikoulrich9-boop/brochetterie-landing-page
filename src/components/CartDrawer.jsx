@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react';
-import { useCart, formatPrice, parsePrice } from '../context/CartContext';
+import { useCart } from '../context/CartContext';
+import { formatPrice, parsePrice } from '../utils/price';
 
 export default function CartDrawer() {
   const {
@@ -36,43 +37,44 @@ export default function CartDrawer() {
   return (
     <AnimatePresence>
       {isCartOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsCartOpen(false)}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              backgroundColor: '#000000',
-              zIndex: 999,
-              cursor: 'pointer'
-            }}
-          />
+        <motion.div
+          key="cart-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsCartOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: '#000000',
+            zIndex: 999,
+            cursor: 'pointer'
+          }}
+        />
+      )}
 
-          {/* Drawer Panel */}
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            style={{
-              position: 'fixed',
-              top: 0,
-              right: 0,
-              bottom: 0,
-              width: '100%',
-              maxWidth: '450px',
-              backgroundColor: '#FFF7EC',
-              boxShadow: '-10px 0 30px rgba(0, 0, 0, 0.15)',
-              zIndex: 1000,
-              display: 'flex',
-              flexDirection: 'column',
-              fontFamily: "'Plus Jakarta Sans', sans-serif"
-            }}
-          >
+      {isCartOpen && (
+        <motion.div
+          key="cart-panel"
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '100%' }}
+          transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+          style={{
+            position: 'fixed',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            width: '100%',
+            maxWidth: '450px',
+            backgroundColor: '#FFF7EC',
+            boxShadow: '-10px 0 30px rgba(0, 0, 0, 0.15)',
+            zIndex: 1000,
+            display: 'flex',
+            flexDirection: 'column',
+            fontFamily: "'Plus Jakarta Sans', sans-serif"
+          }}
+        >
             {/* Header */}
             <div
               style={{
@@ -398,8 +400,8 @@ export default function CartDrawer() {
               </div>
             )}
           </motion.div>
-        </>
-      )}
+        )
+      }
     </AnimatePresence>
   );
 }
