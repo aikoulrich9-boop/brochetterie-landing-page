@@ -356,9 +356,9 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center !important;
   }
   .floating-image img {
-    width: 150% !important;
-    max-width: 580px !important;
-    margin-left: -35% !important;
+    width: 320% !important;
+    max-width: 1500px !important;
+    margin-left: -160% !important;
     transform: none !important;
   }
   .steam-container {
