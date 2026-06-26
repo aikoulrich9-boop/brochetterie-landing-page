@@ -93,8 +93,8 @@ export default function Tradition() {
                 src="/images/tradition_preparation.png"
                 alt="Préparation Traditionnelle de l'igname pilée"
                 style={{
-                  width: '115%',
-                  maxWidth: '530px',
+                  width: '135%',
+                  maxWidth: '650px',
                   height: 'auto',
                   objectFit: 'contain'
                 }}
