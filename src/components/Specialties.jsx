@@ -190,10 +190,13 @@ export default function Specialties() {
                 </div>
 
                 <div 
+                  className="responsive-card-footer"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '12px',
                     marginTop: 'auto',
                     paddingTop: '20px',
                     borderTop: '1px solid rgba(42, 22, 22, 0.06)'
@@ -205,7 +208,8 @@ export default function Specialties() {
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: '1.4rem',
                       fontWeight: 900,
-                      color: '#B31217'
+                      color: '#B31217',
+                      whiteSpace: 'nowrap'
                     }}
                   >
                     {item.price}
@@ -213,6 +217,7 @@ export default function Specialties() {
 
                   {/* Add to Cart Button */}
                   <motion.button
+                    className="responsive-card-btn"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => addToCart({
@@ -224,6 +229,7 @@ export default function Specialties() {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
+                      justifyContent: 'center',
                       gap: '8px',
                       backgroundColor: '#FFC107',
                       color: '#2A1616',
@@ -234,7 +240,8 @@ export default function Specialties() {
                       fontSize: '0.88rem',
                       border: 'none',
                       cursor: 'pointer',
-                      boxShadow: '0 4px 12px rgba(255, 193, 7, 0.15)'
+                      boxShadow: '0 4px 12px rgba(255, 193, 7, 0.15)',
+                      whiteSpace: 'nowrap'
                     }}
                   >
                     Ajouter au panier
