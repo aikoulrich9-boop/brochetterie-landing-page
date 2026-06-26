@@ -6,10 +6,8 @@ export default function Delivery() {
   return (
     <section
       id="livraison"
-      className="curved-top bg-pattern-african-red"
+      className="curved-top bg-pattern-african-red section-padding-medium"
       style={{
-        paddingTop: '100px',
-        paddingBottom: '100px',
         backgroundColor: '#B31217', // Premium Deep Red
         color: '#FFF7EC',
         position: 'relative',

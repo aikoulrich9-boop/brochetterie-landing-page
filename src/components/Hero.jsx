@@ -6,12 +6,10 @@ export default function Hero() {
   return (
     <section
       id="accueil"
-      className="bg-pattern-african"
+      className="bg-pattern-african section-padding-hero"
       style={{
         position: 'relative',
         minHeight: '100vh',
-        paddingTop: '120px',
-        paddingBottom: '80px',
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
@@ -129,6 +127,7 @@ export default function Hero() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
+                className="hero-cta-btn"
                 href="https://wa.me/2290167411124"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -161,6 +160,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="hero-image-container"
             style={{
               position: 'relative',
               width: '100%',
@@ -208,6 +208,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              className="hero-badge-left"
               style={{
                 position: 'absolute',
                 top: '20%',
@@ -232,6 +233,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 0.5 }}
+              className="hero-badge-right"
               style={{
                 position: 'absolute',
                 bottom: '18%',
@@ -255,48 +257,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
-      {/* CSS responsive styling helper */}
-      <style>{`
-        @media (max-width: 900px) {
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            text-align: center;
-            gap: 40px !important;
-          }
-          .hero-grid > div:first-child {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-          }
-          .hero-grid > div:first-child p {
-            max-width: 100% !important;
-          }
-          .hero-grid > div:last-child {
-            order: -1;
-            margin-bottom: 20px;
-            min-height: 320px !important;
-          }
-          .floating-image {
-            position: relative !important;
-            bottom: 0 !important;
-            right: 0 !important;
-            width: 100% !important;
-            justify-content: center !important;
-            align-items: center !important;
-          }
-          .floating-image img {
-            width: 100% !important;
-            max-width: 320px !important;
-            transform: none !important;
-          }
-          .steam-container {
-            top: 24% !important;
-            left: 50% !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

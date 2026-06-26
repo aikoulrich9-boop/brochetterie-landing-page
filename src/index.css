@@ -284,3 +284,99 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 4px !important;
   }
 }
+
+/* Responsive padding classes */
+.section-padding-hero {
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+.section-padding-large {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.section-padding-medium {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .section-padding-hero {
+    padding-top: 90px !important;
+    padding-bottom: 40px !important;
+  }
+  .section-padding-large {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+  }
+  .section-padding-medium {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+/* Responsive adjustments for Hero section on mobile */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+    gap: 30px !important;
+  }
+  .hero-grid > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-grid > div:first-child p {
+    max-width: 100% !important;
+  }
+  .hero-image-container {
+    order: -1 !important;
+    margin-bottom: 10px !important;
+    min-height: 290px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .floating-image {
+    position: relative !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .floating-image img {
+    width: 100% !important;
+    max-width: 250px !important;
+    transform: none !important;
+  }
+  .steam-container {
+    top: 24% !important;
+    left: 50% !important;
+  }
+  .hero-badge-left {
+    top: 15% !important;
+    left: 50% !important;
+    margin-left: -180px !important;
+    right: auto !important;
+    font-size: 0.8rem !important;
+    padding: 8px 12px !important;
+  }
+  .hero-badge-right {
+    bottom: 12% !important;
+    left: 50% !important;
+    margin-left: 50px !important;
+    right: auto !important;
+    font-size: 0.8rem !important;
+    padding: 8px 12px !important;
+  }
+  .hero-badge-left p, .hero-badge-right p {
+    font-size: 0.75rem !important;
+  }
+  .hero-cta-btn {
+    padding: 14px 36px !important;
+    font-size: 1rem !important;
+  }
+}

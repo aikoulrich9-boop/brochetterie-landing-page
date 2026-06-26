@@ -38,10 +38,8 @@ export default function Specialties() {
   return (
     <section
       id="specialites"
-      className="curved-top bg-white"
+      className="curved-top bg-white section-padding-medium"
       style={{
-        paddingTop: '100px',
-        paddingBottom: '100px',
         backgroundColor: '#ffffff',
         position: 'relative',
         zIndex: 20

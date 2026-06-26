@@ -119,10 +119,8 @@ export default function Menu() {
   return (
     <section
       id="menu"
-      className="curved-top bg-white"
+      className="curved-top bg-white section-padding-medium"
       style={{
-        paddingTop: '100px',
-        paddingBottom: '100px',
         backgroundColor: '#ffffff',
         position: 'relative',
         zIndex: 20
@@ -160,6 +158,7 @@ export default function Menu() {
 
         {/* Gourmet Platter Banner */}
         <div
+          className="menu-banner-container"
           style={{
             position: 'relative',
             borderRadius: '32px',
@@ -179,6 +178,7 @@ export default function Menu() {
             }}
           />
           <div
+            className="menu-banner-overlay"
             style={{
               position: 'absolute',
               inset: 0,
@@ -408,6 +408,33 @@ export default function Menu() {
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {/* CSS responsiveness helper for Menu */}
+      <style>{`
+        @media (max-width: 768px) {
+          .menu-banner-container {
+            height: 190px !important;
+            border-radius: 20px !important;
+            margin-bottom: 30px !important;
+          }
+          .menu-banner-overlay {
+            padding: 24px 20px !important;
+            background: linear-gradient(to bottom, rgba(30, 11, 11, 0.9) 0%, rgba(30, 11, 11, 0.95) 100%) !important;
+          }
+          .menu-banner-overlay h3 {
+            font-size: 1.25rem !important;
+            margin-bottom: 4px !important;
+          }
+          .menu-banner-overlay p {
+            font-size: 0.8rem !important;
+            line-height: 1.4 !important;
+          }
+          .menu-banner-overlay span {
+            font-size: 0.7rem !important;
+            margin-bottom: 8px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

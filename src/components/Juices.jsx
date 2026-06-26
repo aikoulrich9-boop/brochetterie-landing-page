@@ -53,10 +53,8 @@ export default function Juices() {
   return (
     <section
       id="jus"
-      className="bg-pattern-african"
+      className="bg-pattern-african section-padding-medium"
       style={{
-        paddingTop: '100px',
-        paddingBottom: '100px',
         backgroundColor: '#FFF7EC',
         position: 'relative',
         zIndex: 20
@@ -108,6 +106,7 @@ export default function Juices() {
 
             {/* Sticker sticker */}
             <div
+              className="juice-image-sticker"
               style={{
                 position: 'absolute',
                 top: '30px',
@@ -133,6 +132,7 @@ export default function Juices() {
 
             {/* Text on Image overlay */}
             <div
+              className="juice-image-overlay"
               style={{
                 position: 'absolute',
                 bottom: '40px',
@@ -304,10 +304,30 @@ export default function Juices() {
         @media (max-width: 900px) {
           .juices-grid {
             grid-template-columns: 1fr !important;
-            gap: 40px !important;
+            gap: 30px !important;
           }
           .juices-grid > div:first-child {
-            height: 380px !important;
+            height: 290px !important;
+            border-radius: 24px !important;
+          }
+          .juice-image-sticker {
+            top: 15px !important;
+            right: 15px !important;
+            font-size: 0.75rem !important;
+            padding: 6px 12px !important;
+          }
+          .juice-image-overlay {
+            bottom: 20px !important;
+            left: 20px !important;
+            right: 20px !important;
+          }
+          .juice-image-overlay h3 {
+            font-size: 1.4rem !important;
+            margin-bottom: 4px !important;
+          }
+          .juice-image-overlay p {
+            font-size: 0.8rem !important;
+            line-height: 1.4 !important;
           }
         }
       `}</style>

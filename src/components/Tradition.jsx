@@ -35,11 +35,9 @@ export default function Tradition() {
     <section
       ref={containerRef}
       id="tradition"
-      className="bg-pattern-african"
+      className="bg-pattern-african section-padding-large"
       style={{
         position: 'relative',
-        paddingTop: '120px',
-        paddingBottom: '120px',
         backgroundColor: '#FFF7EC',
         overflow: 'hidden'
       }}
@@ -273,10 +271,14 @@ export default function Tradition() {
         @media (max-width: 900px) {
           .tradition-grid {
             grid-template-columns: 1fr !important;
-            gap: 50px !important;
+            gap: 35px !important;
           }
           .tradition-grid > div:first-child {
-            height: 380px !important;
+            height: 290px !important;
+          }
+          .tradition-grid img {
+            width: 100% !important;
+            max-width: 280px !important;
           }
         }
       `}</style>
