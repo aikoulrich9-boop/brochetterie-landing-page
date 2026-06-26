@@ -225,7 +225,7 @@ export default function Menu() {
                 margin: '0 0 8px 0'
               }}
             >
-              Le Vrai Goût de la Braise Traditionnelle
+              Le Vrai Goût de la Braise
             </h3>
             <p
               style={{
