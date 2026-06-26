@@ -11,14 +11,8 @@ export default function Gallery() {
 
   return (
     <section style={{ backgroundColor: '#FFF7EC', padding: '40px 0' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', marginTop: '-10mm' }}>
-        <div 
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-            gap: '20px' 
-          }}
-        >
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+        <div className="grid-gallery">
           {images.map((src, index) => (
             <motion.div
               key={index}

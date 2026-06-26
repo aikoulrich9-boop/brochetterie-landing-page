@@ -195,18 +195,7 @@ export default function Juices() {
                 <motion.div
                   key={juice.name}
                   whileHover={{ x: 8 }}
-                  style={{
-                    backgroundColor: '#ffffff',
-                    padding: '18px 24px',
-                    borderRadius: '20px',
-                    boxShadow: 'var(--shadow-soft)',
-                    border: '1px solid rgba(179, 18, 23, 0.03)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '16px',
-                    transition: 'all 0.3s ease'
-                  }}
+                  className="juice-card"
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     {/* Emoji badge */}
@@ -251,7 +240,7 @@ export default function Juices() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <div className="juice-card-right" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <span
                       style={{
                         fontFamily: "'Outfit', sans-serif",
