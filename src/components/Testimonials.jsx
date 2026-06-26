@@ -44,7 +44,13 @@ export default function Testimonials() {
     >
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          style={{ textAlign: 'center', marginBottom: '60px' }}
+        >
           <span
             style={{
               fontFamily: "'Outfit', sans-serif",
@@ -70,7 +76,7 @@ export default function Testimonials() {
           >
             Ce Qu'en Disent Nos Amateurs d'Igname
           </h2>
-        </div>
+        </motion.div>
 
         {/* Grid of Testimonials */}
         <div 
@@ -82,8 +88,17 @@ export default function Testimonials() {
           }}
         >
           {testimonials.map((item, idx) => (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6, delay: idx * 0.15, ease: 'easeOut' }}
+              whileHover={{ 
+                y: -10, 
+                boxShadow: '0 20px 40px rgba(179, 18, 23, 0.12)',
+                transition: { duration: 0.3 }
+              }}
               style={{
                 backgroundColor: '#FFF7EC',
                 borderRadius: '28px',
@@ -144,7 +159,8 @@ export default function Testimonials() {
                 }}
               >
                 {/* Avatar Initials with color gradient */}
-                <div
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                   style={{
                     width: '46px',
                     height: '46px',
@@ -161,7 +177,7 @@ export default function Testimonials() {
                   }}
                 >
                   {item.initials}
-                </div>
+                </motion.div>
                 <div>
                   <h4
                     style={{
@@ -186,7 +202,7 @@ export default function Testimonials() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

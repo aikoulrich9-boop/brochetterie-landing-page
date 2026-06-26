@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-cream);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-light);
+  background: rgba(179, 18, 23, 0.4);
   border-radius: 10px;
   border: 2px solid var(--bg-cream);
 }

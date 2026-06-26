@@ -128,7 +128,13 @@ export default function Menu() {
     >
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          style={{ textAlign: 'center', marginBottom: '48px' }}
+        >
           <span
             style={{
               fontFamily: "'Outfit', sans-serif",
@@ -154,10 +160,14 @@ export default function Menu() {
           >
             Nos Spécialités & Grillades
           </h2>
-        </div>
+        </motion.div>
 
         {/* Gourmet Platter Banner */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
           className="menu-banner-container"
           style={{
             position: 'relative',
@@ -229,7 +239,7 @@ export default function Menu() {
               Découvrez nos accompagnements typiques et nos viandes savamment marinées, grillées au charbon de bois naturel pour un parfum irrésistible.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Category Filters (Tabs) */}
         <div

@@ -68,7 +68,11 @@ export default function Tradition() {
           }}
         >
           {/* Left Column: Image with floating effect (no frame) */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
             style={{
               position: 'relative',
               width: '100%',
@@ -128,37 +132,44 @@ export default function Tradition() {
                 Le battement régulier du pilon dans le mortier annonce à tout le quartier qu'un repas généreux et festif se prépare dans le foyer.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Interactive Process timeline */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span
-              style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: '0.9rem',
-                fontWeight: 800,
-                color: '#B31217',
-                textTransform: 'uppercase',
-                letterSpacing: '2px',
-                display: 'block',
-                marginBottom: '12px'
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
             >
-              Secrets de Fabrication
-            </span>
-            
-            <h2
-              style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: 'clamp(2rem, 4vw, 2.8rem)',
-                fontWeight: 900,
-                color: '#2A1616',
-                marginBottom: '36px',
-                lineHeight: 1.15
-              }}
-            >
-              L'Art Singulier du Pilonnage
-            </h2>
+              <span
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: '0.9rem',
+                  fontWeight: 800,
+                  color: '#B31217',
+                  textTransform: 'uppercase',
+                  letterSpacing: '2px',
+                  display: 'block',
+                  marginBottom: '12px'
+                }}
+              >
+                Secrets de Fabrication
+              </span>
+              
+              <h2
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: 'clamp(2rem, 4vw, 2.8rem)',
+                  fontWeight: 900,
+                  color: '#2A1616',
+                  marginBottom: '36px',
+                  lineHeight: 1.15
+                }}
+              >
+                L'Art Singulier du Pilonnage
+              </h2>
+            </motion.div>
 
             {/* Stepper Timeline Container */}
             <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '30px', paddingLeft: '8px' }}>

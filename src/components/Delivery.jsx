@@ -44,8 +44,12 @@ export default function Delivery() {
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-        <div 
+        <motion.div 
           className="delivery-content"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
           style={{
             maxWidth: '800px',
             margin: '0 auto',
@@ -213,7 +217,7 @@ export default function Delivery() {
               </span>
             </motion.a>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* CSS styling for Delivery responsiveness */}

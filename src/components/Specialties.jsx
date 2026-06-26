@@ -47,7 +47,13 @@ export default function Specialties() {
     >
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          style={{ textAlign: 'center', marginBottom: '60px' }}
+        >
           <span
             style={{
               fontFamily: "'Outfit', sans-serif",
@@ -84,7 +90,7 @@ export default function Specialties() {
           >
             Une pâte d'igname pilée d'une blancheur et d'une souplesse parfaites, préparée à la commande et accompagnée de sauces cuites à l'étouffée selon les recettes ancestrales.
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards Grid */}
         <div className="grid-specialties">
