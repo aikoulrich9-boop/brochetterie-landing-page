@@ -38,6 +38,7 @@ export default function Header() {
     { name: 'Tradition', href: '#tradition' },
     { name: 'Menu', href: '#menu' },
     { name: 'Nos Jus', href: '#jus' },
+    { name: 'Traiteur', href: '#traiteur' },
     { name: 'Livraison', href: '#livraison' },
   ];
 

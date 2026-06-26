@@ -7,6 +7,7 @@ import Tradition from './components/Tradition';
 import Menu from './components/Menu';
 import Gallery from './components/Gallery';
 import Juices from './components/Juices';
+import Catering from './components/Catering';
 import Testimonials from './components/Testimonials';
 import Delivery from './components/Delivery';
 import Footer from './components/Footer';
@@ -31,6 +32,7 @@ export default function App() {
             <Gallery />
             <Menu />
             <Juices />
+            <Catering />
             <Testimonials />
             <Delivery />
           </main>

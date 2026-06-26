@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react';
+import { X, Plus, Minus, Trash2, ShoppingBag, ArrowLeft, Send } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { formatPrice, parsePrice } from '../utils/price';
 
@@ -15,24 +15,64 @@ export default function CartDrawer() {
     cartItemsCount
   } = useCart();
 
-  const handleCheckout = () => {
-    if (cart.length === 0) return;
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [customerName, setCustomerName] = useState('');
+  const [customerPhone, setCustomerPhone] = useState('');
+  const [customerAddress, setCustomerAddress] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('Espèces');
+  const [customerNotes, setCustomerNotes] = useState('');
+  const [focusedField, setFocusedField] = useState(null);
 
-    let message = "Bonjour Brochetterie ! Je souhaite passer une commande :\n\n";
+  const handleCheckout = () => {
+    setIsCheckingOut(true);
+  };
+
+  const handleFinalCheckout = () => {
+    if (!customerName.trim() || !customerPhone.trim() || !customerAddress.trim()) {
+      alert("Veuillez remplir tous les champs obligatoires (*).");
+      return;
+    }
+
+    let message = `*✨ NOUVELLE COMMANDE - BROCHETTERIE ✨*\n\n`;
+    message += `👤 *Client :* ${customerName}\n`;
+    message += `📞 *Téléphone :* ${customerPhone}\n`;
+    message += `📍 *Adresse de livraison :* ${customerAddress}\n`;
+    message += `💳 *Moyen de paiement :* ${paymentMethod}\n`;
+    if (customerNotes.trim()) {
+      message += `📝 *Notes :* ${customerNotes}\n`;
+    }
+    
+    message += `\n----------------------------------\n`;
+    message += `🛒 *DÉTAILS DU PANIER :*\n`;
     
     cart.forEach((item) => {
       const itemTotal = parsePrice(item.price) * item.quantity;
       message += `• ${item.quantity} x ${item.name} (${formatPrice(itemTotal)})\n`;
     });
 
-    message += `\n💵 Total de la commande : ${formatPrice(cartTotal)}\n`;
-    message += `🛵 Livraison à préciser.`;
+    message += `----------------------------------\n`;
+    message += `💰 *TOTAL À PAYER : ${formatPrice(cartTotal)}*\n\n`;
+    message += `Merci de confirmer ma commande ! 🛵`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/2290167411124?text=${encodedMessage}`;
     
     window.open(whatsappUrl, '_blank');
   };
+
+  const inputStyle = (fieldName) => ({
+    width: '100%',
+    padding: '12px 16px',
+    borderRadius: '12px',
+    border: focusedField === fieldName ? '2px solid #B31217' : '2px solid rgba(42, 22, 22, 0.1)',
+    backgroundColor: 'var(--bg-white)',
+    color: 'var(--text-dark)',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontSize: '0.95rem',
+    outline: 'none',
+    transition: 'border-color 0.2s',
+    marginTop: '6px'
+  });
 
   return (
     <AnimatePresence>
@@ -75,64 +115,202 @@ export default function CartDrawer() {
             fontFamily: "'Plus Jakarta Sans', sans-serif"
           }}
         >
-            {/* Header */}
-            <div
+          {/* Header */}
+          <div
+            style={{
+              padding: '24px',
+              borderBottom: '1px solid rgba(42, 22, 22, 0.08)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              backgroundColor: 'var(--bg-white)'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              {isCheckingOut ? (
+                <button
+                  onClick={() => setIsCheckingOut(false)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(42, 22, 22, 0.05)',
+                    color: 'var(--text-dark)',
+                    marginRight: '8px',
+                    transition: 'background-color 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.1)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.05)'}
+                >
+                  <ArrowLeft size={18} />
+                </button>
+              ) : (
+                <ShoppingBag size={22} color="#B31217" />
+              )}
+              <h3
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: '1.4rem',
+                  fontWeight: 800,
+                  color: 'var(--text-dark)',
+                  margin: 0
+                }}
+              >
+                {isCheckingOut ? 'Vos Coordonnées' : `Votre Panier (${cartItemsCount})`}
+              </h3>
+            </div>
+            <button
+              onClick={() => setIsCartOpen(false)}
               style={{
-                padding: '24px',
-                borderBottom: '1px solid rgba(42, 22, 22, 0.08)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '4px',
+                borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
-                backgroundColor: 'var(--bg-white)'
+                justifyContent: 'center',
+                backgroundColor: 'rgba(42, 22, 22, 0.05)',
+                transition: 'background-color 0.2s'
               }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.05)'}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <ShoppingBag size={22} color="#B31217" />
-                <h3
-                  style={{
-                    fontFamily: "'Outfit', sans-serif",
-                    fontSize: '1.4rem',
-                    fontWeight: 800,
-                    color: 'var(--text-dark)',
-                    margin: 0
-                  }}
-                >
-                  Votre Panier ({cartItemsCount})
-                </h3>
-              </div>
-              <button
-                onClick={() => setIsCartOpen(false)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '4px',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: 'rgba(42, 22, 22, 0.05)',
-                  transition: 'background-color 0.2s'
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.1)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.05)'}
-              >
-                <X size={20} color="var(--text-dark)" />
-              </button>
-            </div>
+              <X size={20} color="var(--text-dark)" />
+            </button>
+          </div>
 
-            {/* Cart Items List */}
-            <div
-              style={{
-                flex: 1,
-                overflowY: 'auto',
-                padding: '24px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px'
-              }}
-            >
-              {cart.length === 0 ? (
+          {/* Body Content */}
+          <div
+            style={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '24px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '16px'
+            }}
+          >
+            {isCheckingOut ? (
+              // Checkout Coordinates Form
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+                <div>
+                  <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-dark)' }}>
+                    Nom Complet *
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Ex: Koffi Mensah"
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    onFocus={() => setFocusedField('name')}
+                    onBlur={() => setFocusedField(null)}
+                    style={inputStyle('name')}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-dark)' }}>
+                    Numéro de Téléphone *
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="Ex: +229 01 00 00 00"
+                    value={customerPhone}
+                    onChange={(e) => setCustomerPhone(e.target.value)}
+                    onFocus={() => setFocusedField('phone')}
+                    onBlur={() => setFocusedField(null)}
+                    style={inputStyle('phone')}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-dark)' }}>
+                    Quartier & Adresse de livraison *
+                  </label>
+                  <textarea
+                    placeholder="Ex: Cotonou, Haie Vive, Rue 125, Maison à côté de la pharmacie"
+                    value={customerAddress}
+                    onChange={(e) => setCustomerAddress(e.target.value)}
+                    onFocus={() => setFocusedField('address')}
+                    onBlur={() => setFocusedField(null)}
+                    rows={3}
+                    style={{
+                      ...inputStyle('address'),
+                      resize: 'none',
+                      lineHeight: 1.4
+                    }}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-dark)', marginBottom: '8px', display: 'block' }}>
+                    Moyen de Paiement préféré
+                  </label>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
+                    {[
+                      { id: 'MTN Mobile Money', name: 'MTN Momo', icon: '📲', color: '#ffcc00' },
+                      { id: 'Moov Money', name: 'Moov Money', icon: '💸', color: '#0066cc' },
+                      { id: 'Wave', name: 'Wave', icon: '🌊', color: '#4da6ff' },
+                      { id: 'Espèces', name: 'Espèces', icon: '💵', color: '#2eb82e' }
+                    ].map((method) => {
+                      const isSelected = paymentMethod === method.id;
+                      return (
+                        <button
+                          key={method.id}
+                          type="button"
+                          onClick={() => setPaymentMethod(method.id)}
+                          style={{
+                            padding: '12px',
+                            borderRadius: '12px',
+                            border: isSelected ? '2px solid #B31217' : '1px solid rgba(42, 22, 22, 0.08)',
+                            backgroundColor: isSelected ? 'rgba(179, 18, 23, 0.05)' : 'var(--bg-white)',
+                            color: 'var(--text-dark)',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: '6px',
+                            fontFamily: "'Plus Jakarta Sans', sans-serif",
+                            fontSize: '0.85rem',
+                            fontWeight: isSelected ? 700 : 500,
+                            transition: 'all 0.2s',
+                          }}
+                        >
+                          <span style={{ fontSize: '1.4rem' }}>{method.icon}</span>
+                          <span>{method.name}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div>
+                  <label style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-dark)' }}>
+                    Notes spéciales (Optionnel)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Ex: Piment bien fort, igname bien chaude..."
+                    value={customerNotes}
+                    onChange={(e) => setCustomerNotes(e.target.value)}
+                    onFocus={() => setFocusedField('notes')}
+                    onBlur={() => setFocusedField(null)}
+                    style={inputStyle('notes')}
+                  />
+                </div>
+              </div>
+            ) : (
+              // Standard Cart Items List
+              cart.length === 0 ? (
                 <div
                   style={{
                     display: 'flex',
@@ -328,40 +506,68 @@ export default function CartDrawer() {
                     </button>
                   </motion.div>
                 ))
-              )}
-            </div>
+              )
+            )}
+          </div>
 
-            {/* Footer */}
-            {cart.length > 0 && (
+          {/* Footer */}
+          {cart.length > 0 && (
+            <div
+              style={{
+                padding: '24px',
+                borderTop: '1px solid rgba(42, 22, 22, 0.08)',
+                backgroundColor: 'var(--bg-white)',
+                boxShadow: '0 -4px 20px rgba(0,0,0,0.02)'
+              }}
+            >
               <div
                 style={{
-                  padding: '24px',
-                  borderTop: '1px solid rgba(42, 22, 22, 0.08)',
-                  backgroundColor: 'var(--bg-white)',
-                  boxShadow: '0 -4px 20px rgba(0,0,0,0.02)'
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginBottom: '20px'
                 }}
               >
-                <div
+                <span style={{ fontSize: '1rem', color: '#6B5C5C', fontWeight: 600 }}>Sous-total</span>
+                <span
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    marginBottom: '20px'
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: '1.5rem',
+                    fontWeight: 950,
+                    color: 'var(--text-dark)'
                   }}
                 >
-                  <span style={{ fontSize: '1rem', color: '#6B5C5C', fontWeight: 600 }}>Sous-total</span>
-                  <span
-                    style={{
-                      fontFamily: "'Outfit', sans-serif",
-                      fontSize: '1.5rem',
-                      fontWeight: 900,
-                      color: 'var(--text-dark)'
-                    }}
-                  >
-                    {formatPrice(cartTotal)}
-                  </span>
-                </div>
+                  {formatPrice(cartTotal)}
+                </span>
+              </div>
 
+              {isCheckingOut ? (
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleFinalCheckout}
+                  style={{
+                    width: '100%',
+                    backgroundColor: '#B31217',
+                    color: 'var(--bg-cream)',
+                    border: 'none',
+                    padding: '16px 20px',
+                    borderRadius: '9999px',
+                    fontFamily: "'Outfit', sans-serif",
+                    fontWeight: 800,
+                    fontSize: '1.1rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                    boxShadow: '0 8px 24px rgba(179, 18, 23, 0.25)'
+                  }}
+                >
+                  <Send size={18} />
+                  Confirmer sur WhatsApp
+                </motion.button>
+              ) : (
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -384,24 +590,25 @@ export default function CartDrawer() {
                     boxShadow: '0 8px 24px rgba(179, 18, 23, 0.25)'
                   }}
                 >
-                  🛵 Commander via WhatsApp
+                  <span>🛵</span>
+                  Saisir mes Coordonnées
                 </motion.button>
-                <p
-                  style={{
-                    textAlign: 'center',
-                    fontSize: '0.75rem',
-                    color: '#9E8E8E',
-                    marginTop: '12px',
-                    marginBottom: 0
-                  }}
-                >
-                  Votre commande sera transmise et finalisée sur WhatsApp.
-                </p>
-              </div>
-            )}
-          </motion.div>
-        )
-      }
+              )}
+              <p
+                style={{
+                  textAlign: 'center',
+                  fontSize: '0.75rem',
+                  color: '#9E8E8E',
+                  marginTop: '12px',
+                  marginBottom: 0
+                }}
+              >
+                Votre commande sera transmise et finalisée sur WhatsApp.
+              </p>
+            </div>
+          )}
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 }
