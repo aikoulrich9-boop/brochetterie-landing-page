@@ -43,24 +43,20 @@ export default function Delivery() {
         }}
       />
 
-      {/* Decorative delivery floating image */}
-      <motion.img
-        src="/images/delivery_deco.png"
-        alt="Livraison"
-        animate={{ y: [0, -15, 0] }}
-        transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-        style={{
-          position: 'absolute',
-          bottom: '-5%',
-          left: '-2%',
-          width: 'clamp(200px, 30vw, 400px)',
-          zIndex: 5,
-          pointerEvents: 'none',
-          opacity: 0.8,
-          filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.2))',
-          transform: 'rotate(-5deg)'
-        }}
-      />
+      {/* Decorative delivery floating background image */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1, pointerEvents: 'none', opacity: 1 }}>
+        <motion.img
+          src="/images/delivery_deco.png"
+          alt="Livraison Décoratif"
+          animate={{ y: [0, -30, 0] }}
+          transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
+          style={{
+            width: 'clamp(1200px, 180vw, 2400px)',
+            filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.2))',
+            transform: 'rotate(-5deg)'
+          }}
+        />
+      </div>
 
       <div className="container" style={{ position: 'relative', zIndex: 10 }}>
         <motion.div 
