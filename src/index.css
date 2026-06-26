@@ -403,3 +403,18 @@ h1, h2, h3, h4, h5, h6 {
     width: 100% !important;
   }
 }
+
+/* Scrollbar hide utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 768px) {
+  .carousel-nav-btn {
+    display: none !important;
+  }
+}
