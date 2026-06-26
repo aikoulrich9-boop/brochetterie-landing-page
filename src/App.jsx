@@ -12,6 +12,7 @@ import Delivery from './components/Delivery';
 import Footer from './components/Footer';
 import { CartProvider } from './context/CartContext';
 import CartDrawer from './components/CartDrawer';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,6 +36,7 @@ export default function App() {
           </main>
           <Footer />
           <CartDrawer />
+          <ScrollToTop />
         </div>
       )}
 

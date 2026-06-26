@@ -10,7 +10,7 @@ export default function Gallery() {
   ];
 
   return (
-    <section style={{ backgroundColor: '#FFF7EC', padding: '80px 0' }}>
+    <section style={{ backgroundColor: 'var(--bg-cream)', padding: '80px 0' }}>
       <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
         {/* Section Header */}
         <motion.div 
@@ -39,7 +39,7 @@ export default function Gallery() {
               fontFamily: "'Outfit', sans-serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 900,
-              color: '#2A1616',
+              color: 'var(--text-dark)',
               marginBottom: '20px'
             }}
           >
@@ -98,7 +98,7 @@ export default function Gallery() {
               alignItems: 'center',
               gap: '10px',
               backgroundColor: '#B31217',
-              color: '#FFF7EC',
+              color: 'var(--bg-cream)',
               padding: '16px 32px',
               borderRadius: '9999px',
               fontFamily: "'Outfit', sans-serif",

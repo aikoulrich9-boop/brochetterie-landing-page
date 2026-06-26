@@ -7,7 +7,7 @@ export default function Footer() {
     <footer
       style={{
         backgroundColor: '#1E0B0B', // Rich dark brown/red charcoal
-        color: '#FFF7EC',
+        color: 'var(--bg-cream)',
         paddingTop: '80px',
         paddingBottom: '30px',
         position: 'relative',
@@ -98,24 +98,34 @@ export default function Footer() {
                     height: '38px',
                     borderRadius: '50%',
                     backgroundColor: 'rgba(255, 247, 236, 0.05)',
-                    color: '#FFF7EC',
+                    color: 'var(--bg-cream)',
                     transition: 'all 0.3s ease',
                     textDecoration: 'none'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#FFC107';
-                    e.currentTarget.style.color = '#2A1616';
+                    e.currentTarget.style.backgroundColor = 'var(--secondary)';
+                    e.currentTarget.style.color = 'var(--text-dark)';
                     e.currentTarget.style.transform = 'translateY(-3px)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = 'rgba(255, 247, 236, 0.05)';
-                    e.currentTarget.style.color = '#FFF7EC';
                     e.currentTarget.style.transform = 'translateY(0)';
                   }}
                 >
                   {social.icon}
                 </a>
               ))}
+            </div>
+
+            {/* Qualité Garantie Badge */}
+            <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '12px', backgroundColor: 'rgba(255, 193, 7, 0.1)', padding: '12px 16px', borderRadius: '8px', border: '1px solid rgba(255, 193, 7, 0.2)', width: 'fit-content' }}>
+              <div style={{ backgroundColor: '#FFC107', borderRadius: '50%', padding: '6px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2A1616" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+              </div>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: '0.9rem', fontWeight: 700, color: '#FFC107' }}>Qualité 100% Garantie</span>
             </div>
           </div>
 
@@ -126,7 +136,7 @@ export default function Footer() {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: '1.15rem',
                 fontWeight: 800,
-                color: '#FFC107',
+                color: 'var(--secondary)',
                 marginBottom: '24px',
                 textTransform: 'uppercase',
                 letterSpacing: '1px'
@@ -153,7 +163,7 @@ export default function Footer() {
                       textDecoration: 'none',
                       transition: 'color 0.2s'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = '#FFC107'}
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--secondary)'}
                     onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 247, 236, 0.7)'}
                   >
                     {link.name}
@@ -170,7 +180,7 @@ export default function Footer() {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: '1.15rem',
                 fontWeight: 800,
-                color: '#FFC107',
+                color: 'var(--secondary)',
                 marginBottom: '24px',
                 textTransform: 'uppercase',
                 letterSpacing: '1px'
@@ -181,10 +191,10 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {/* Phone */}
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <Phone size={18} style={{ color: '#FFC107', marginTop: '3px' }} />
+                <Phone size={18} style={{ color: 'var(--secondary)', marginTop: '3px' }} />
                 <div>
                   <p style={{ fontSize: '0.8rem', color: 'rgba(255, 247, 236, 0.5)', margin: 0 }}>Par téléphone</p>
-                  <a href="tel:+2290167411124" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '1rem', color: '#FFF7EC', textDecoration: 'none' }}>
+                  <a href="tel:+2290167411124" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '1rem', color: 'var(--bg-cream)', textDecoration: 'none' }}>
                     +229 01 67 41 11 24
                   </a>
                 </div>
@@ -192,10 +202,10 @@ export default function Footer() {
 
               {/* WhatsApp */}
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <MessageSquare size={18} style={{ color: '#FFC107', marginTop: '3px' }} />
+                <MessageSquare size={18} style={{ color: 'var(--secondary)', marginTop: '3px' }} />
                 <div>
                   <p style={{ fontSize: '0.8rem', color: 'rgba(255, 247, 236, 0.5)', margin: 0 }}>WhatsApp Express</p>
-                  <a href="https://wa.me/2290167411124" target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '1rem', color: '#FFF7EC', textDecoration: 'none' }}>
+                  <a href="https://wa.me/2290167411124" target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '1rem', color: 'var(--bg-cream)', textDecoration: 'none' }}>
                     Wa.me/+229 01 67 41 11 24
                   </a>
                 </div>
@@ -203,10 +213,10 @@ export default function Footer() {
 
               {/* Address */}
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                <MapPin size={18} style={{ color: '#FFC107', marginTop: '3px' }} />
+                <MapPin size={18} style={{ color: 'var(--secondary)', marginTop: '3px' }} />
                 <div>
                   <p style={{ fontSize: '0.8rem', color: 'rgba(255, 247, 236, 0.5)', margin: 0 }}>Adresse</p>
-                  <p style={{ fontSize: '0.9rem', color: '#FFF7EC', margin: 0 }}>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--bg-cream)', margin: 0 }}>
                     Avenue Jean-Paul II, Cotonou, Bénin
                   </p>
                 </div>
@@ -219,6 +229,17 @@ export default function Footer() {
                   <p style={{ fontSize: '0.8rem', color: 'rgba(255, 247, 236, 0.5)', margin: 0 }}>Horaires d'ouverture</p>
                   <p style={{ fontSize: '0.9rem', color: '#FFF7EC', margin: 0 }}>
                     Lun - Dim : 11h00 - 22h30
+                  </p>
+                </div>
+              </div>
+
+              {/* Delivery Zone */}
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginTop: '8px', padding: '12px', backgroundColor: 'rgba(255, 247, 236, 0.05)', borderRadius: '8px', border: '1px solid rgba(255, 247, 236, 0.1)' }}>
+                <Send size={18} style={{ color: '#FFC107', marginTop: '2px' }} />
+                <div>
+                  <p style={{ fontSize: '0.8rem', color: 'rgba(255, 247, 236, 0.5)', margin: 0 }}>Zone de livraison</p>
+                  <p style={{ fontSize: '0.9rem', color: '#FFF7EC', margin: 0, fontWeight: 600 }}>
+                    Cotonou, Calavi et environs
                   </p>
                 </div>
               </div>

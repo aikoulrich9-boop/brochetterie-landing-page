@@ -38,7 +38,7 @@ export default function Tradition() {
       className="bg-pattern-african section-padding-large"
       style={{
         position: 'relative',
-        backgroundColor: '#FFF7EC',
+        backgroundColor: 'var(--bg-cream)',
         overflow: 'hidden'
       }}
     >
@@ -128,7 +128,7 @@ export default function Tradition() {
               <h4 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.1rem', fontWeight: 800, color: '#B31217', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ fontSize: '1.3rem' }}>🥁</span> Le Secret du Rythme
               </h4>
-              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '0.88rem', color: '#2A1616', lineHeight: 1.5, margin: 0 }}>
+              <p style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: '0.88rem', color: 'var(--text-dark)', lineHeight: 1.5, margin: 0 }}>
                 Le battement régulier du pilon dans le mortier annonce à tout le quartier qu'un repas généreux et festif se prépare dans le foyer.
               </p>
             </div>
@@ -162,7 +162,7 @@ export default function Tradition() {
                   fontFamily: "'Outfit', sans-serif",
                   fontSize: 'clamp(2rem, 4vw, 2.8rem)',
                   fontWeight: 900,
-                  color: '#2A1616',
+                  color: 'var(--text-dark)',
                   marginBottom: '36px',
                   lineHeight: 1.15
                 }}
@@ -199,7 +199,7 @@ export default function Tradition() {
                     zIndex: 5,
                     display: 'flex',
                     gap: '24px',
-                    backgroundColor: '#ffffff',
+                    backgroundColor: 'var(--bg-white)',
                     padding: '24px',
                     borderRadius: '24px',
                     boxShadow: 'var(--shadow-soft)',
@@ -246,7 +246,7 @@ export default function Tradition() {
                         fontFamily: "'Outfit', sans-serif",
                         fontSize: '1.25rem',
                         fontWeight: 800,
-                        color: '#2A1616',
+                        color: 'var(--text-dark)',
                         marginBottom: '8px',
                         display: 'flex',
                         alignItems: 'center',

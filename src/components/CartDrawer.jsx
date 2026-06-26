@@ -67,7 +67,7 @@ export default function CartDrawer() {
             bottom: 0,
             width: '100%',
             maxWidth: '450px',
-            backgroundColor: '#FFF7EC',
+            backgroundColor: 'var(--bg-cream)',
             boxShadow: '-10px 0 30px rgba(0, 0, 0, 0.15)',
             zIndex: 1000,
             display: 'flex',
@@ -83,7 +83,7 @@ export default function CartDrawer() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                backgroundColor: '#ffffff'
+                backgroundColor: 'var(--bg-white)'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -93,7 +93,7 @@ export default function CartDrawer() {
                     fontFamily: "'Outfit', sans-serif",
                     fontSize: '1.4rem',
                     fontWeight: 800,
-                    color: '#2A1616',
+                    color: 'var(--text-dark)',
                     margin: 0
                   }}
                 >
@@ -117,7 +117,7 @@ export default function CartDrawer() {
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.1)'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.05)'}
               >
-                <X size={20} color="#2A1616" />
+                <X size={20} color="var(--text-dark)" />
               </button>
             </div>
 
@@ -152,7 +152,7 @@ export default function CartDrawer() {
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: '1.2rem',
                       fontWeight: 700,
-                      color: '#2A1616',
+                      color: 'var(--text-dark)',
                       margin: 0
                     }}
                   >
@@ -167,7 +167,7 @@ export default function CartDrawer() {
                     onClick={() => setIsCartOpen(false)}
                     style={{
                       backgroundColor: '#B31217',
-                      color: '#FFF7EC',
+                      color: 'var(--bg-cream)',
                       fontFamily: "'Outfit', sans-serif",
                       fontWeight: 700,
                       border: 'none',
@@ -190,7 +190,7 @@ export default function CartDrawer() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     style={{
-                      backgroundColor: '#ffffff',
+                      backgroundColor: 'var(--bg-white)',
                       borderRadius: '16px',
                       padding: '16px',
                       boxShadow: '0 4px 15px rgba(0, 0, 0, 0.03)',
@@ -224,7 +224,7 @@ export default function CartDrawer() {
                           fontFamily: "'Outfit', sans-serif",
                           fontSize: '0.98rem',
                           fontWeight: 700,
-                          color: '#2A1616',
+                          color: 'var(--text-dark)',
                           margin: '0 0 4px 0',
                           lineHeight: 1.3
                         }}
@@ -281,7 +281,7 @@ export default function CartDrawer() {
                             style={{
                               fontSize: '0.85rem',
                               fontWeight: 700,
-                              color: '#2A1616',
+                              color: 'var(--text-dark)',
                               minWidth: '16px',
                               textAlign: 'center'
                             }}
@@ -337,7 +337,7 @@ export default function CartDrawer() {
                 style={{
                   padding: '24px',
                   borderTop: '1px solid rgba(42, 22, 22, 0.08)',
-                  backgroundColor: '#ffffff',
+                  backgroundColor: 'var(--bg-white)',
                   boxShadow: '0 -4px 20px rgba(0,0,0,0.02)'
                 }}
               >
@@ -355,7 +355,7 @@ export default function CartDrawer() {
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: '1.5rem',
                       fontWeight: 900,
-                      color: '#2A1616'
+                      color: 'var(--text-dark)'
                     }}
                   >
                     {formatPrice(cartTotal)}
@@ -369,7 +369,7 @@ export default function CartDrawer() {
                   style={{
                     width: '100%',
                     backgroundColor: '#B31217',
-                    color: '#FFF7EC',
+                    color: 'var(--bg-cream)',
                     border: 'none',
                     padding: '16px 20px',
                     borderRadius: '9999px',

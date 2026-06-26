@@ -77,7 +77,7 @@ export default function Juices() {
       id="jus"
       className="bg-pattern-african"
       style={{
-        backgroundColor: '#FFF7EC',
+        backgroundColor: 'var(--bg-cream)',
         position: 'relative',
         zIndex: 20,
         padding: '80px 0 100px 0',
@@ -129,7 +129,7 @@ export default function Juices() {
             style={{
               fontFamily: "'Outfit', sans-serif",
               fontSize: 'clamp(2rem, 5vw, 3rem)',
-              color: '#2A1616',
+              color: 'var(--text-dark)',
               fontWeight: 800,
               lineHeight: 1.2
             }}
@@ -151,7 +151,7 @@ export default function Juices() {
             }}
             className="carousel-nav-btn"
           >
-            <ChevronLeft size={24} color="#2A1616" />
+            <ChevronLeft size={24} color="var(--text-dark)" />
           </button>
 
           <button 
@@ -163,7 +163,7 @@ export default function Juices() {
             }}
             className="carousel-nav-btn"
           >
-            <ChevronRight size={24} color="#2A1616" />
+            <ChevronRight size={24} color="var(--text-dark)" />
           </button>
 
           {/* Scrolling Area */}
@@ -236,7 +236,7 @@ export default function Juices() {
                     fontFamily: "'Outfit', sans-serif",
                     fontSize: '1.4rem',
                     fontWeight: 800,
-                    color: '#2A1616',
+                    color: 'var(--text-dark)',
                     marginBottom: '8px'
                   }}>
                     {juice.name}
@@ -278,7 +278,7 @@ export default function Juices() {
                         whatsappText: juice.whatsappText
                       })}
                       style={{
-                        backgroundColor: '#FFC107',
+                        backgroundColor: 'var(--secondary)',
                         border: 'none',
                         width: '40px',
                         height: '40px',
@@ -287,7 +287,7 @@ export default function Juices() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         cursor: 'pointer',
-                        color: '#2A1616'
+                        color: 'var(--text-dark)'
                       }}
                       title="Ajouter au panier"
                     >

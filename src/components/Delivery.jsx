@@ -9,7 +9,7 @@ export default function Delivery() {
       className="curved-top bg-pattern-african-red section-padding-medium"
       style={{
         backgroundColor: '#B31217', // Premium Deep Red
-        color: '#FFF7EC',
+        color: 'var(--bg-cream)',
         position: 'relative',
         zIndex: 20,
         overflow: 'hidden'
@@ -82,8 +82,8 @@ export default function Delivery() {
               width: '70px',
               height: '70px',
               borderRadius: '50%',
-              backgroundColor: '#FFC107',
-              color: '#2A1616',
+              backgroundColor: 'var(--secondary)',
+              color: 'var(--text-dark)',
               marginBottom: '32px',
               boxShadow: '0 10px 25px rgba(255, 193, 7, 0.25)'
             }}
@@ -140,7 +140,7 @@ export default function Delivery() {
                 border: '1px solid rgba(255, 247, 236, 0.15)',
                 borderRadius: '24px',
                 padding: '28px',
-                color: '#FFF7EC',
+                color: 'var(--bg-cream)',
                 textDecoration: 'none',
                 display: 'flex',
                 flexDirection: 'column',
@@ -148,8 +148,8 @@ export default function Delivery() {
                 transition: 'all 0.3s ease'
               }}
             >
-              <div style={{ backgroundColor: '#FFC107', color: '#2A1616', width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center' }}>
-                <MessageSquare size={20} fill="#2A1616" />
+              <div style={{ backgroundColor: 'var(--secondary)', color: 'var(--text-dark)', width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center' }}>
+                <MessageSquare size={20} fill="var(--text-dark)" />
               </div>
               <div>
                 <h4 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.2rem', fontWeight: 800, marginBottom: '6px' }}>
@@ -159,7 +159,7 @@ export default function Delivery() {
                   Commandez par message en précisant vos sauces et vos viandes.
                 </p>
               </div>
-              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFC107', marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--secondary)', marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}>
                 Ouvrir WhatsApp →
               </span>
             </motion.a>
@@ -173,7 +173,7 @@ export default function Delivery() {
                 border: '1px solid rgba(255, 247, 236, 0.15)',
                 borderRadius: '24px',
                 padding: '28px',
-                color: '#FFF7EC',
+                color: 'var(--bg-cream)',
                 textDecoration: 'none',
                 display: 'flex',
                 flexDirection: 'column',
@@ -181,8 +181,8 @@ export default function Delivery() {
                 transition: 'all 0.3s ease'
               }}
             >
-              <div style={{ backgroundColor: '#FFC107', color: '#2A1616', width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center' }}>
-                <Phone size={20} fill="#2A1616" />
+              <div style={{ backgroundColor: 'var(--secondary)', color: 'var(--text-dark)', width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center' }}>
+                <Phone size={20} fill="var(--text-dark)" />
               </div>
               <div>
                 <h4 style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.2rem', fontWeight: 800, marginBottom: '6px' }}>
@@ -192,7 +192,7 @@ export default function Delivery() {
                   Appelez-nous directement pour une prise de commande vocale immédiate.
                 </p>
               </div>
-              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFC107', marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--secondary)', marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}>
                 Appeler : +229 01 67... →
               </span>
             </motion.a>
@@ -208,7 +208,7 @@ export default function Delivery() {
                 border: '1px solid rgba(255, 247, 236, 0.15)',
                 borderRadius: '24px',
                 padding: '28px',
-                color: '#FFF7EC',
+                color: 'var(--bg-cream)',
                 textDecoration: 'none',
                 display: 'flex',
                 flexDirection: 'column',
@@ -216,7 +216,7 @@ export default function Delivery() {
                 transition: 'all 0.3s ease'
               }}
             >
-              <div style={{ backgroundColor: '#FFC107', color: '#2A1616', width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center' }}>
+              <div style={{ backgroundColor: 'var(--secondary)', color: 'var(--text-dark)', width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center' }}>
                 <ShoppingBag size={20} />
               </div>
               <div>
@@ -227,7 +227,7 @@ export default function Delivery() {
                   Commandez l'Igname Pilée Signature Sauce Graine Express en un clic.
                 </p>
               </div>
-              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFC107', marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--secondary)', marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}>
                 Commander l'Assiette Star →
               </span>
             </motion.a>

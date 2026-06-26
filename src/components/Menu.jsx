@@ -121,7 +121,7 @@ export default function Menu() {
       id="menu"
       className="curved-top bg-white section-padding-medium"
       style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: 'var(--bg-white)',
         position: 'relative',
         zIndex: 20
       }}
@@ -154,7 +154,7 @@ export default function Menu() {
               fontFamily: "'Outfit', sans-serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 900,
-              color: '#2A1616',
+              color: 'var(--text-dark)',
               marginBottom: '20px'
             }}
           >
@@ -201,8 +201,8 @@ export default function Menu() {
           >
             <span
               style={{
-                backgroundColor: '#FFC107',
-                color: '#2A1616',
+                backgroundColor: 'var(--secondary)',
+                color: 'var(--text-dark)',
                 fontFamily: "'Outfit', sans-serif",
                 fontWeight: 700,
                 fontSize: '0.75rem',
@@ -221,7 +221,7 @@ export default function Menu() {
                 fontFamily: "'Outfit', sans-serif",
                 fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
                 fontWeight: 800,
-                color: '#FFF7EC',
+                color: 'var(--bg-cream)',
                 margin: '0 0 8px 0'
               }}
             >
@@ -269,7 +269,7 @@ export default function Menu() {
                 cursor: 'pointer',
                 transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                 backgroundColor: activeTab === tab.id ? '#B31217' : 'rgba(179, 18, 23, 0.05)',
-                color: activeTab === tab.id ? '#FFF7EC' : '#B31217',
+                color: activeTab === tab.id ? 'var(--bg-cream)' : '#B31217',
                 boxShadow: activeTab === tab.id ? '0 8px 20px rgba(179, 18, 23, 0.2)' : 'none'
               }}
               onMouseEnter={(e) => {
@@ -304,7 +304,7 @@ export default function Menu() {
                 transition={{ duration: 0.3 }}
                 whileHover={{ y: -6 }}
                 style={{
-                  backgroundColor: '#FFF7EC',
+                  backgroundColor: 'var(--bg-cream)',
                   borderRadius: '24px',
                   padding: '24px',
                   boxShadow: 'var(--shadow-soft)',
@@ -318,8 +318,8 @@ export default function Menu() {
                 <div>
                   {/* Rating / Badges */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'rgba(255, 193, 7, 0.15)', color: '#FFC107', padding: '4px 8px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 800 }}>
-                      <Star size={12} fill="#FFC107" />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px', backgroundColor: 'rgba(255, 193, 7, 0.15)', color: 'var(--secondary)', padding: '4px 8px', borderRadius: '8px', fontSize: '0.8rem', fontWeight: 800 }}>
+                      <Star size={12} fill="var(--secondary)" />
                       {item.rating}
                     </div>
                     <span 
@@ -344,7 +344,7 @@ export default function Menu() {
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: '1.2rem',
                       fontWeight: 800,
-                      color: '#2A1616',
+                      color: 'var(--text-dark)',
                       marginBottom: '8px'
                     }}
                   >
@@ -404,7 +404,7 @@ export default function Menu() {
                       height: '38px',
                       borderRadius: '50%',
                       backgroundColor: '#B31217',
-                      color: '#FFF7EC',
+                      color: 'var(--bg-cream)',
                       border: 'none',
                       cursor: 'pointer',
                       boxShadow: '0 4px 10px rgba(179, 18, 23, 0.15)'

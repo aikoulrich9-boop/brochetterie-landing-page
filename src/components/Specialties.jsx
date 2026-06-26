@@ -40,7 +40,7 @@ export default function Specialties() {
       id="specialites"
       className="curved-top bg-white section-padding-medium"
       style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: 'var(--bg-white)',
         position: 'relative',
         zIndex: 20
       }}
@@ -73,7 +73,7 @@ export default function Specialties() {
               fontFamily: "'Outfit', sans-serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 900,
-              color: '#2A1616',
+              color: 'var(--text-dark)',
               marginBottom: '20px'
             }}
           >
@@ -106,7 +106,7 @@ export default function Specialties() {
                 transition: { duration: 0.25, ease: 'easeInOut' }
               }}
               style={{
-                backgroundColor: '#FFF7EC',
+                backgroundColor: 'var(--bg-cream)',
                 borderRadius: '32px',
                 overflow: 'hidden',
                 boxShadow: 'var(--shadow-soft)',
@@ -137,7 +137,7 @@ export default function Specialties() {
                     top: '20px',
                     left: '20px',
                     backgroundColor: '#B31217',
-                    color: '#FFF7EC',
+                    color: 'var(--bg-cream)',
                     padding: '6px 14px',
                     borderRadius: '9999px',
                     fontSize: '0.75rem',
@@ -175,7 +175,7 @@ export default function Specialties() {
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: '1.35rem',
                       fontWeight: 800,
-                      color: '#2A1616',
+                      color: 'var(--text-dark)',
                       marginBottom: '10px',
                       lineHeight: 1.3
                     }}
@@ -237,8 +237,8 @@ export default function Specialties() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       gap: '8px',
-                      backgroundColor: '#FFC107',
-                      color: '#2A1616',
+                      backgroundColor: 'var(--secondary)',
+                      color: 'var(--text-dark)',
                       padding: '10px 18px',
                       borderRadius: '9999px',
                       fontFamily: "'Outfit', sans-serif",

@@ -18,7 +18,7 @@ export default function Testimonials() {
       comment: "On retrouve vraiment le goût traditionnel et authentique du pays. C'est pilonné à la main et cela se sent immédiatement à la texture. La livraison est rapide, le plat arrive très chaud.",
       rating: 5,
       initials: 'KA',
-      bgGradient: 'linear-gradient(135deg, #FFC107, #F5A623)'
+      bgGradient: 'linear-gradient(135deg, var(--secondary), #F5A623)'
     },
     {
       name: 'Amina D.',
@@ -26,7 +26,7 @@ export default function Testimonials() {
       comment: "La meilleure adresse pour l'igname pilée, sans hésitation. Les portions sont extrêmement généreuses et le rapport qualité-prix est imbattable. Le service client WhatsApp est très réactif.",
       rating: 5,
       initials: 'AD',
-      bgGradient: 'linear-gradient(135deg, #2A1616, #B31217)'
+      bgGradient: 'linear-gradient(135deg, var(--text-dark), #B31217)'
     }
   ];
 
@@ -37,7 +37,7 @@ export default function Testimonials() {
       style={{
         paddingTop: '100px',
         paddingBottom: '100px',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'var(--bg-white)',
         position: 'relative',
         zIndex: 20
       }}
@@ -70,7 +70,7 @@ export default function Testimonials() {
               fontFamily: "'Outfit', sans-serif",
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: 900,
-              color: '#2A1616',
+              color: 'var(--text-dark)',
               marginBottom: '20px'
             }}
           >
@@ -100,7 +100,7 @@ export default function Testimonials() {
                 transition: { duration: 0.3 }
               }}
               style={{
-                backgroundColor: '#FFF7EC',
+                backgroundColor: 'var(--bg-cream)',
                 borderRadius: '28px',
                 padding: '36px',
                 boxShadow: 'var(--shadow-soft)',
@@ -127,7 +127,7 @@ export default function Testimonials() {
                 {/* Stars */}
                 <div style={{ display: 'flex', gap: '4px', marginBottom: '24px' }}>
                   {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} size={16} fill="#FFC107" color="#FFC107" />
+                    <Star key={i} size={16} fill="var(--secondary)" color="var(--secondary)" />
                   ))}
                 </div>
 
@@ -136,7 +136,7 @@ export default function Testimonials() {
                   style={{
                     fontFamily: "'Plus Jakarta Sans', sans-serif",
                     fontSize: '0.98rem',
-                    color: '#2A1616',
+                    color: 'var(--text-dark)',
                     lineHeight: 1.7,
                     fontStyle: 'italic',
                     marginBottom: '28px',
@@ -166,7 +166,7 @@ export default function Testimonials() {
                     height: '46px',
                     borderRadius: '50%',
                     background: item.bgGradient,
-                    color: '#FFF7EC',
+                    color: 'var(--bg-cream)',
                     fontFamily: "'Outfit', sans-serif",
                     fontWeight: 700,
                     fontSize: '1rem',
@@ -184,7 +184,7 @@ export default function Testimonials() {
                       fontFamily: "'Outfit', sans-serif",
                       fontSize: '1.05rem',
                       fontWeight: 800,
-                      color: '#2A1616',
+                      color: 'var(--text-dark)',
                       margin: 0
                     }}
                   >

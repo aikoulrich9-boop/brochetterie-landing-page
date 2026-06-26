@@ -13,7 +13,7 @@ export default function Hero() {
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
-        backgroundColor: '#FFF7EC'
+        backgroundColor: 'var(--bg-cream)'
       }}
     >
       {/* Background Decorative Gradient Blurs */}
@@ -93,7 +93,7 @@ export default function Hero() {
                 fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
                 fontWeight: 900,
                 lineHeight: 1.1,
-                color: '#2A1616',
+                color: 'var(--text-dark)',
                 marginBottom: '24px'
               }}
             >
@@ -137,7 +137,7 @@ export default function Hero() {
                   alignItems: 'center',
                   gap: '12px',
                   backgroundColor: '#B31217',
-                  color: '#FFF7EC',
+                  color: 'var(--bg-cream)',
                   fontFamily: "'Outfit', sans-serif",
                   fontWeight: 800,
                   fontSize: '1.1rem',
@@ -201,7 +201,7 @@ export default function Hero() {
                 position: 'absolute',
                 top: '20%',
                 left: '-10px',
-                backgroundColor: '#ffffff',
+                backgroundColor: 'var(--bg-white)',
                 padding: '12px 18px',
                 borderRadius: '16px',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
@@ -214,7 +214,7 @@ export default function Hero() {
               <span style={{ fontSize: '1.5rem' }}>🔥</span>
               <div>
                 <p style={{ fontSize: '0.75rem', color: '#6B5C5C', fontWeight: 600, margin: 0 }}>Plat Star</p>
-                <p style={{ fontSize: '0.9rem', fontWeight: 800, color: '#2A1616', margin: 0 }}>Sauce Graine</p>
+                <p style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-dark)', margin: 0 }}>Sauce Graine</p>
               </div>
             </motion.div>
 
@@ -226,7 +226,7 @@ export default function Hero() {
                 position: 'absolute',
                 bottom: '18%',
                 right: '40px',
-                backgroundColor: '#ffffff',
+                backgroundColor: 'var(--bg-white)',
                 padding: '12px 18px',
                 borderRadius: '16px',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
@@ -239,7 +239,7 @@ export default function Hero() {
               <span style={{ fontSize: '1.5rem' }}>🥩</span>
               <div>
                 <p style={{ fontSize: '0.75rem', color: '#6B5C5C', fontWeight: 600, margin: 0 }}>Viande au choix</p>
-                <p style={{ fontSize: '0.9rem', fontWeight: 800, color: '#2A1616', margin: 0 }}>Braises tendres</p>
+                <p style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-dark)', margin: 0 }}>Braises tendres</p>
               </div>
             </motion.div>
           </motion.div>

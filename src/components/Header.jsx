@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, MessageSquare, ShoppingCart } from 'lucide-react';
+import { Menu, X, Phone, MessageSquare, ShoppingCart, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 
@@ -7,6 +7,18 @@ export default function Header() {
   const { setIsCartOpen, cartItemsCount } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  // Theme state
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +75,7 @@ export default function Header() {
                 fontFamily: "'Outfit', sans-serif",
                 fontWeight: 600,
                 fontSize: '1rem',
-                color: '#2A1616',
+                color: 'var(--text-dark)',
                 textDecoration: 'none',
                 padding: '4px 0'
               }}
@@ -73,8 +85,31 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Cart Icon (Desktop & Mobile) */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        {/* Action Icons (Desktop & Mobile) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '8px',
+              color: 'var(--text-dark)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'var(--primary-light)',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              transition: 'background-color 0.2s'
+            }}
+          >
+            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+          </button>
+
+          {/* Cart Icon */}
           <button
             onClick={() => setIsCartOpen(true)}
             style={{
@@ -83,18 +118,16 @@ export default function Header() {
               border: 'none',
               cursor: 'pointer',
               padding: '8px',
-              color: '#2A1616',
+              color: 'var(--text-dark)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: 'rgba(42, 22, 22, 0.05)',
+              backgroundColor: 'var(--primary-light)',
               borderRadius: '50%',
               width: '40px',
               height: '40px',
               transition: 'background-color 0.2s'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.1)'}
-            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.05)'}
           >
             <ShoppingCart size={20} />
             {cartItemsCount > 0 && (
@@ -103,8 +136,8 @@ export default function Header() {
                   position: 'absolute',
                   top: '-4px',
                   right: '-4px',
-                  backgroundColor: '#B31217',
-                  color: '#FFF7EC',
+                  backgroundColor: 'var(--primary)',
+                  color: 'var(--bg-white)',
                   fontSize: '0.7rem',
                   fontWeight: 900,
                   width: '18px',
@@ -113,7 +146,7 @@ export default function Header() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  border: '2px solid #FFF7EC'
+                  border: '2px solid var(--bg-white)'
                 }}
               >
                 {cartItemsCount}
