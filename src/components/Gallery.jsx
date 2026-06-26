@@ -42,7 +42,8 @@ export default function Gallery() {
                   maxHeight: '300px',
                   objectFit: 'contain',
                   display: 'block',
-                  filter: 'drop-shadow(0px 15px 25px rgba(0,0,0,0.15))'
+                  filter: 'drop-shadow(0px 15px 25px rgba(0,0,0,0.15))',
+                  animation: `float ${5 + (index % 2) * 1.5}s ease-in-out ${index * 0.3}s infinite`
                 }}
               />
             </motion.div>
