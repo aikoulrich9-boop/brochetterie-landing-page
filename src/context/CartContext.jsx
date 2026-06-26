@@ -34,6 +34,7 @@ export const CartProvider = ({ children }) => {
       }
       return [...prevCart, { ...item, quantity: 1 }];
     });
+    setIsCartOpen(true);
   };
 
   const removeFromCart = (id) => {
