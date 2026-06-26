@@ -86,14 +86,14 @@ export default function Juices() {
       ref={ref}
     >
       {/* Decorative juice floating background image */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1, pointerEvents: 'none', opacity: 0.15 }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1, pointerEvents: 'none', opacity: 1 }}>
         <motion.img
           src="/images/juice_deco.png"
           alt="Jus Décoratif"
           animate={{ y: [0, -30, 0] }}
           transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
           style={{
-            width: 'clamp(900px, 120vw, 1500px)',
+            width: 'clamp(1050px, 140vw, 1750px)',
             filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.1))',
             transform: 'rotate(-5deg)'
           }}
