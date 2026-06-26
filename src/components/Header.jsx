@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, MessageSquare } from 'lucide-react';
+import { Menu, X, Phone, MessageSquare, ShoppingCart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from '../context/CartContext';
 
 export default function Header() {
+  const { setIsCartOpen, cartItemsCount } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -72,7 +74,54 @@ export default function Header() {
         </nav>
 
         {/* CTA Button */}
-        <div className="hidden md:flex items-center gap-4" style={{ display: 'flex', gap: '16px' }}>
+        <div className="hidden md:flex items-center gap-4" style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+          {/* Cart Icon (Desktop) */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            style={{
+              position: 'relative',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '8px',
+              color: '#2A1616',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'rgba(42, 22, 22, 0.05)',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.1)'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.05)'}
+          >
+            <ShoppingCart size={20} />
+            {cartItemsCount > 0 && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '-4px',
+                  right: '-4px',
+                  backgroundColor: '#B31217',
+                  color: '#FFF7EC',
+                  fontSize: '0.7rem',
+                  fontWeight: 900,
+                  width: '18px',
+                  height: '18px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '2px solid #FFF7EC'
+                }}
+              >
+                {cartItemsCount}
+              </span>
+            )}
+          </button>
+
           <a
             href="https://wa.me/2290167411124"
             target="_blank"
@@ -108,22 +157,71 @@ export default function Header() {
           </a>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden p-2 text-[#2A1616]"
-          onClick={() => setIsOpen(!isOpen)}
-          style={{
-            display: 'none',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: '8px',
-            color: '#2A1616'
-          }}
-          className="mobile-menu-toggle"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile controls group (Cart + Hamburger) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }} className="md:hidden">
+          {/* Cart Icon (Mobile) */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            style={{
+              position: 'relative',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '8px',
+              color: '#2A1616',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: 'rgba(42, 22, 22, 0.05)',
+              borderRadius: '50%',
+              width: '40px',
+              height: '40px',
+              transition: 'background-color 0.2s'
+            }}
+          >
+            <ShoppingCart size={20} />
+            {cartItemsCount > 0 && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '-4px',
+                  right: '-4px',
+                  backgroundColor: '#B31217',
+                  color: '#FFF7EC',
+                  fontSize: '0.7rem',
+                  fontWeight: 900,
+                  width: '18px',
+                  height: '18px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '2px solid #FFF7EC'
+                }}
+              >
+                {cartItemsCount}
+              </span>
+            )}
+          </button>
+
+          {/* Mobile Toggle */}
+          <button
+            className="p-2 text-[#2A1616]"
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '8px',
+              color: '#2A1616',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}

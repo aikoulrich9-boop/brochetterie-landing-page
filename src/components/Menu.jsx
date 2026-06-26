@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Star } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 export default function Menu() {
+  const { addToCart } = useCart();
   const [activeTab, setActiveTab] = useState('all');
 
   const menuItems = [
@@ -375,12 +377,15 @@ export default function Menu() {
                     {item.price}
                   </span>
 
-                  <motion.a
+                  <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    href={`https://wa.me/2290167411124?text=${encodeURIComponent(item.whatsappText)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={() => addToCart({
+                      id: item.id,
+                      name: item.name,
+                      price: item.price,
+                      emoji: item.category === 'grillades' ? '🥩' : '🍲'
+                    })}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -390,12 +395,13 @@ export default function Menu() {
                       borderRadius: '50%',
                       backgroundColor: '#B31217',
                       color: '#FFF7EC',
-                      textDecoration: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
                       boxShadow: '0 4px 10px rgba(179, 18, 23, 0.15)'
                     }}
                   >
                     <ShoppingBag size={15} />
-                  </motion.a>
+                  </motion.button>
                 </div>
               </motion.div>
             ))}

@@ -10,12 +10,14 @@ import Juices from './components/Juices';
 import Testimonials from './components/Testimonials';
 import Delivery from './components/Delivery';
 import Footer from './components/Footer';
+import { CartProvider } from './context/CartContext';
+import CartDrawer from './components/CartDrawer';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <>
+    <CartProvider>
       <Loader onComplete={() => setIsLoading(false)} />
       
       {!isLoading && (
@@ -32,6 +34,7 @@ export default function App() {
             <Delivery />
           </main>
           <Footer />
+          <CartDrawer />
         </div>
       )}
 
@@ -48,6 +51,6 @@ export default function App() {
           }
         }
       `}</style>
-    </>
+    </CartProvider>
   );
 }

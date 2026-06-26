@@ -1,0 +1,405 @@
+import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react';
+import { useCart, formatPrice, parsePrice } from '../context/CartContext';
+
+export default function CartDrawer() {
+  const {
+    cart,
+    isCartOpen,
+    setIsCartOpen,
+    updateQuantity,
+    removeFromCart,
+    cartTotal,
+    cartItemsCount
+  } = useCart();
+
+  const handleCheckout = () => {
+    if (cart.length === 0) return;
+
+    let message = "Bonjour Brochetterie ! Je souhaite passer une commande :\n\n";
+    
+    cart.forEach((item) => {
+      const itemTotal = parsePrice(item.price) * item.quantity;
+      message += `• ${item.quantity} x ${item.name} (${formatPrice(itemTotal)})\n`;
+    });
+
+    message += `\n💵 Total de la commande : ${formatPrice(cartTotal)}\n`;
+    message += `🛵 Livraison à préciser.`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/2290167411124?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
+  return (
+    <AnimatePresence>
+      {isCartOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsCartOpen(false)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              backgroundColor: '#000000',
+              zIndex: 999,
+              cursor: 'pointer'
+            }}
+          />
+
+          {/* Drawer Panel */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              width: '100%',
+              maxWidth: '450px',
+              backgroundColor: '#FFF7EC',
+              boxShadow: '-10px 0 30px rgba(0, 0, 0, 0.15)',
+              zIndex: 1000,
+              display: 'flex',
+              flexDirection: 'column',
+              fontFamily: "'Plus Jakarta Sans', sans-serif"
+            }}
+          >
+            {/* Header */}
+            <div
+              style={{
+                padding: '24px',
+                borderBottom: '1px solid rgba(42, 22, 22, 0.08)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                backgroundColor: '#ffffff'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <ShoppingBag size={22} color="#B31217" />
+                <h3
+                  style={{
+                    fontFamily: "'Outfit', sans-serif",
+                    fontSize: '1.4rem',
+                    fontWeight: 800,
+                    color: '#2A1616',
+                    margin: 0
+                  }}
+                >
+                  Votre Panier ({cartItemsCount})
+                </h3>
+              </div>
+              <button
+                onClick={() => setIsCartOpen(false)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '4px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: 'rgba(42, 22, 22, 0.05)',
+                  transition: 'background-color 0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.1)'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(42, 22, 22, 0.05)'}
+              >
+                <X size={20} color="#2A1616" />
+              </button>
+            </div>
+
+            {/* Cart Items List */}
+            <div
+              style={{
+                flex: 1,
+                overflowY: 'auto',
+                padding: '24px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px'
+              }}
+            >
+              {cart.length === 0 ? (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '100%',
+                    textAlign: 'center',
+                    gap: '16px',
+                    color: '#6B5C5C',
+                    padding: '0 20px'
+                  }}
+                >
+                  <span style={{ fontSize: '3rem' }}>🍲</span>
+                  <h4
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: '1.2rem',
+                      fontWeight: 700,
+                      color: '#2A1616',
+                      margin: 0
+                    }}
+                  >
+                    Votre panier est vide
+                  </h4>
+                  <p style={{ fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>
+                    Laissez-vous tenter par notre délicieuse igname pilée traditionnelle ou nos grillades savoureuses.
+                  </p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setIsCartOpen(false)}
+                    style={{
+                      backgroundColor: '#B31217',
+                      color: '#FFF7EC',
+                      fontFamily: "'Outfit', sans-serif",
+                      fontWeight: 700,
+                      border: 'none',
+                      padding: '12px 24px',
+                      borderRadius: '9999px',
+                      cursor: 'pointer',
+                      marginTop: '8px',
+                      boxShadow: '0 4px 12px rgba(179, 18, 23, 0.15)'
+                    }}
+                  >
+                    Découvrir le Menu
+                  </motion.button>
+                </div>
+              ) : (
+                cart.map((item) => (
+                  <motion.div
+                    layout
+                    key={item.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    style={{
+                      backgroundColor: '#ffffff',
+                      borderRadius: '16px',
+                      padding: '16px',
+                      boxShadow: '0 4px 15px rgba(0, 0, 0, 0.03)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '14px',
+                      border: '1px solid rgba(42, 22, 22, 0.03)'
+                    }}
+                  >
+                    {/* Visual / Emoji */}
+                    <div
+                      style={{
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '12px',
+                        backgroundColor: 'rgba(255, 193, 7, 0.12)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '1.6rem',
+                        flexShrink: 0
+                      }}
+                    >
+                      {item.emoji || '🍲'}
+                    </div>
+
+                    {/* Info */}
+                    <div style={{ flex: 1 }}>
+                      <h4
+                        style={{
+                          fontFamily: "'Outfit', sans-serif",
+                          fontSize: '0.98rem',
+                          fontWeight: 700,
+                          color: '#2A1616',
+                          margin: '0 0 4px 0',
+                          lineHeight: 1.3
+                        }}
+                      >
+                        {item.name}
+                      </h4>
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          marginTop: '8px'
+                        }}
+                      >
+                        {/* Price */}
+                        <span
+                          style={{
+                            fontFamily: "'Outfit', sans-serif",
+                            fontSize: '0.95rem',
+                            fontWeight: 800,
+                            color: '#B31217'
+                          }}
+                        >
+                          {formatPrice(parsePrice(item.price) * item.quantity)}
+                        </span>
+
+                        {/* Controls */}
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            backgroundColor: 'rgba(42, 22, 22, 0.05)',
+                            padding: '4px 10px',
+                            borderRadius: '9999px'
+                          }}
+                        >
+                          <button
+                            onClick={() => updateQuantity(item.id, -1)}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              padding: '2px',
+                              color: '#6B5C5C'
+                            }}
+                          >
+                            <Minus size={14} />
+                          </button>
+                          <span
+                            style={{
+                              fontSize: '0.85rem',
+                              fontWeight: 700,
+                              color: '#2A1616',
+                              minWidth: '16px',
+                              textAlign: 'center'
+                            }}
+                          >
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() => updateQuantity(item.id, 1)}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              padding: '2px',
+                              color: '#6B5C5C'
+                            }}
+                          >
+                            <Plus size={14} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Delete */}
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        padding: '6px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#a3a3a3',
+                        transition: 'color 0.2s'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#B31217'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#a3a3a3'}
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </motion.div>
+                ))
+              )}
+            </div>
+
+            {/* Footer */}
+            {cart.length > 0 && (
+              <div
+                style={{
+                  padding: '24px',
+                  borderTop: '1px solid rgba(42, 22, 22, 0.08)',
+                  backgroundColor: '#ffffff',
+                  boxShadow: '0 -4px 20px rgba(0,0,0,0.02)'
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '20px'
+                  }}
+                >
+                  <span style={{ fontSize: '1rem', color: '#6B5C5C', fontWeight: 600 }}>Sous-total</span>
+                  <span
+                    style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: '1.5rem',
+                      fontWeight: 900,
+                      color: '#2A1616'
+                    }}
+                  >
+                    {formatPrice(cartTotal)}
+                  </span>
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleCheckout}
+                  style={{
+                    width: '100%',
+                    backgroundColor: '#B31217',
+                    color: '#FFF7EC',
+                    border: 'none',
+                    padding: '16px 20px',
+                    borderRadius: '9999px',
+                    fontFamily: "'Outfit', sans-serif",
+                    fontWeight: 800,
+                    fontSize: '1.1rem',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '10px',
+                    boxShadow: '0 8px 24px rgba(179, 18, 23, 0.25)'
+                  }}
+                >
+                  🛵 Commander via WhatsApp
+                </motion.button>
+                <p
+                  style={{
+                    textAlign: 'center',
+                    fontSize: '0.75rem',
+                    color: '#9E8E8E',
+                    marginTop: '12px',
+                    marginBottom: 0
+                  }}
+                >
+                  Votre commande sera transmise et finalisée sur WhatsApp.
+                </p>
+              </div>
+            )}
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}

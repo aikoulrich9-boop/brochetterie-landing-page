@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 export default function Specialties() {
+  const { addToCart } = useCart();
   const specialties = [
     {
       id: 'sauce-graine',
@@ -211,13 +213,16 @@ export default function Specialties() {
                     {item.price}
                   </span>
 
-                  {/* Order Button */}
-                  <motion.a
+                  {/* Add to Cart Button */}
+                  <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    href={`https://wa.me/2290167411124?text=${encodeURIComponent(item.whatsappText)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={() => addToCart({
+                      id: item.id,
+                      name: item.name,
+                      price: item.price,
+                      emoji: '🍲'
+                    })}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -229,13 +234,14 @@ export default function Specialties() {
                       fontFamily: "'Outfit', sans-serif",
                       fontWeight: 800,
                       fontSize: '0.88rem',
-                      textDecoration: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
                       boxShadow: '0 4px 12px rgba(255, 193, 7, 0.15)'
                     }}
                   >
-                    Commander
+                    Ajouter au panier
                     <ShoppingBag size={14} />
-                  </motion.a>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>

@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingBag, Sparkles } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 export default function Juices() {
+  const { addToCart } = useCart();
   const juices = [
     {
       name: 'Bissap',
@@ -262,12 +264,28 @@ export default function Juices() {
                       {juice.price}
                     </span>
 
-                    <motion.a
+                    <motion.button
                       whileHover={{ scale: 1.08 }}
                       whileTap={{ scale: 0.95 }}
-                      href={`https://wa.me/2290167411124?text=${encodeURIComponent(juice.whatsappText)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      onClick={() => {
+                        const getJuiceFullName = (name) => {
+                          switch (name) {
+                            case 'Bissap': return 'Jus de Bissap Maison';
+                            case 'Tchakpalo': return 'Jus de Tchakpalo Maison';
+                            case 'Adoyo': return "Jus d'Adoyo Maison";
+                            case 'Ananas': return "Jus d'Ananas Pur";
+                            case 'Baobab au lait': return 'Jus de Baobab au lait';
+                            case 'Gingembre': return 'Jus de Gingembre Maison';
+                            default: return name;
+                          }
+                        };
+                        addToCart({
+                          id: `juice-${juice.name.toLowerCase().replace(/\s+/g, '-')}`,
+                          name: getJuiceFullName(juice.name),
+                          price: juice.price,
+                          emoji: '🥤'
+                        });
+                      }}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -277,12 +295,13 @@ export default function Juices() {
                         borderRadius: '50%',
                         backgroundColor: '#B31217',
                         color: '#FFF7EC',
-                        textDecoration: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
                         boxShadow: '0 4px 10px rgba(179, 18, 23, 0.12)'
                       }}
                     >
                       <ShoppingBag size={14} />
-                    </motion.a>
+                    </motion.button>
                   </div>
                 </motion.div>
               ))}
