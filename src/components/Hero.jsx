@@ -116,6 +116,7 @@ export default function Hero() {
 
             {/* Buttons & Conversion */}
             <div
+              className="hero-btn-container"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',

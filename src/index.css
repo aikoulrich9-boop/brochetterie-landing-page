@@ -349,7 +349,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .floating-image img {
     width: 100% !important;
-    max-width: 250px !important;
+    max-width: 330px !important;
     transform: none !important;
   }
   .steam-container {
@@ -359,7 +359,7 @@ h1, h2, h3, h4, h5, h6 {
   .hero-badge-left {
     top: 15% !important;
     left: 50% !important;
-    margin-left: -180px !important;
+    margin-left: -170px !important;
     right: auto !important;
     font-size: 0.8rem !important;
     padding: 8px 12px !important;
@@ -367,13 +367,17 @@ h1, h2, h3, h4, h5, h6 {
   .hero-badge-right {
     bottom: 12% !important;
     left: 50% !important;
-    margin-left: 50px !important;
+    margin-left: 30px !important;
     right: auto !important;
     font-size: 0.8rem !important;
     padding: 8px 12px !important;
   }
   .hero-badge-left p, .hero-badge-right p {
     font-size: 0.75rem !important;
+  }
+  .hero-btn-container {
+    justify-content: center !important;
+    width: 100% !important;
   }
   .hero-cta-btn {
     padding: 14px 36px !important;
